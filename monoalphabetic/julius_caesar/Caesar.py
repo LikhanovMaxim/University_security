@@ -1,6 +1,6 @@
-from read_write_file import read_data_1byte as read
-from read_write_file import write_data_1byte as write
-import detectEnglish
+from monoalphabetic.julius_caesar.read_write_file import read_data_1byte as read
+from monoalphabetic.julius_caesar.read_write_file import write_data_1byte as write
+from monoalphabetic.julius_caesar import detectEnglish
 
 COUNT = 256
 
