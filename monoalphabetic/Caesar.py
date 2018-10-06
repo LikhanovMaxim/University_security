@@ -1,6 +1,6 @@
-from read_write_file import read_data_1byte as read
-from read_write_file import write_data_1byte as write
-import detectEnglish
+from monoalphabetic.read_write_file import read_data_1byte as read
+from monoalphabetic.read_write_file import write_data_1byte as write
+from monoalphabetic import detectEnglish
 
 COUNT = 256
 
