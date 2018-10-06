@@ -78,18 +78,57 @@ def transform_code_to_text(source_text):
 
 
 # Task 1: decrypt a file
-def decrypt_file(encrypt_file, save_file):
+def decrypt_text_file(encrypt_file, save_file):
     encrypt_bytes = read(encrypt_file)
+    key = find_key_for_text(encrypt_bytes)
+    if key != -1:
+        write(save_file, decrypt_data(encrypt_bytes, key))
+    else:
+        print('We could not find a key :(')
+
+
+def find_key_for_text(encrypt_bytes):
     key = -1
     for i in range(0, COUNT):
         decrypt_bytes = decrypt_data(encrypt_bytes[0:20], i)
         text = transform_code_to_text(decrypt_bytes)
-        print('decrypt_data=', text)
         print('key=', i)
+        print('decrypt_data=', text)
         if detectEnglish.isEnglish(text):
             print('Find! Key=', i)
             key = i
             break
+    return key
+
+
+def find_key_for_image(encrypt_bytes, first_byte=137, second_byte=80):
+    key = -1
+    for i in range(0, COUNT):
+        decrypt_bytes = decrypt_data(encrypt_bytes[0:10], i)
+        # print('key=', i)
+        # print('decrypt_data=', decrypt_bytes)
+        # print('decrypt_data=', decrypt_bytes[0])
+        # print('decrypt_data=', decrypt_bytes[1])
+        if decrypt_bytes[0] == first_byte and decrypt_bytes[1] == second_byte:
+            print('Find! Key=', i)
+            key = i
+            break
+    return key
+
+
+def decrypt_png_file(encrypt_file, save_file):
+    encrypt_bytes = read(encrypt_file)
+    key = find_key_for_image(encrypt_bytes)
+    if key != -1:
+        write(save_file, decrypt_data(encrypt_bytes, key))
+    else:
+        print('We could not find a key :(')
+
+
+# Task 2: decrypt a file
+def decrypt_bmp_file(encrypt_file, save_file):
+    encrypt_bytes = read(encrypt_file)
+    key = find_key_for_image(encrypt_bytes, 66, 77)
     if key != -1:
         write(save_file, decrypt_data(encrypt_bytes, key))
     else:
