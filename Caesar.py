@@ -133,3 +133,9 @@ def decrypt_bmp_file(encrypt_file, save_file):
         write(save_file, decrypt_data(encrypt_bytes, key))
     else:
         print('We could not find a key :(')
+
+
+def encrypt_file_after_n_bytes(file, encrypt_txt, key=231, n=50):
+    source_bytes = read(file)
+    encrypt_bytes = encrypt_data(source_bytes[n:], key)
+    write(encrypt_txt, source_bytes[0:n] + encrypt_bytes)
