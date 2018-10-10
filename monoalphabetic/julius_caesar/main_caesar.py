@@ -1,12 +1,10 @@
 from monoalphabetic.julius_caesar import Caesar
 
-ENCRYPT_PNG = 'f2_encrypt.png'
-
-PNG = 'f2.png'
-
 KEY = 67
 DIRECTORY = 'resources/'
 FILE = DIRECTORY + 'f1.txt'
+ENCRYPT_PNG = DIRECTORY + 'f2_encrypt.png'
+PNG = DIRECTORY + 'f2.png'
 ENCRYPT_TXT = DIRECTORY + 'f1_encrypt.txt'
 DECRYPT_TXT = DIRECTORY + 'f1_decrypt.txt'
 ENCRYPT_FOR_TASK_1 = DIRECTORY + 't3_caesar_c_all.txt'
